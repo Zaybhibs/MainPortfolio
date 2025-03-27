@@ -30,7 +30,7 @@ const Aside = () => {
 
       <div className="flex items-center gap-5 ml-1">
         <FaFaceMehBlank className="text-2xl  font-bold" />
-        <h2 className="font-bold text-xl">About me..m</h2>
+        <h2 className="font-bold text-xl">About me..mm</h2>
       </div>
     </div>
   );
