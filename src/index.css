@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+ .scale:hover{
+    animation: zoom-out 3s ease forwards;
+    transition: transform 3s ease-in-out color 3s ease-in-out;
+}
+@keyframes zoom-out {
+    from {
+        transform: scale(1); /* Start at normal size */
+    }
+    to {
+        transform: scale(0.48); /* Scale down to 50% size */
+    }
+} 
