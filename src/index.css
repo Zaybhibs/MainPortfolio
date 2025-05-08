@@ -14,3 +14,97 @@
         transform: scale(0.48); /* Scale down to 50% size */
     }
 } 
+
+.scales:hover{
+  animation: zoom-out 3s ease forwards;
+  transition: transform 3s ease-in-out color 3s ease-in-out;
+}
+@keyframes zoom-out {
+  from {
+      transform: scale(1);
+  }
+  to {
+      transform: scale(1.2);
+  }
+} 
+
+
+.flip-zoom-card {
+    /* Set up 3D space for flip */
+    perspective: 800px;
+    /* Initial state: flipped from below */
+    transform: rotateX(90deg) scale(1);
+    opacity: 0;
+    transition:
+      transform 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+      opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    /* Optional: for smooth zoom on hover */
+    will-change: transform, opacity;
+  }
+  
+  /* When in view, flip in */
+  .flip-zoom-card.visible {
+    transform: rotateX(0deg) scale(1);
+    opacity: 1;
+  }
+  
+  /* Zoom in on hover */
+  .flip-zoom-card:hover {
+    transform: rotateX(0deg) scale(1.07);
+    z-index: 2;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  }
+
+
+/* Custom scrollbar styling */
+.scrollbar-hide::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-hide::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.scrollbar-hide::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.scrollbar-hide::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Smooth transitions */
+.transition-all {
+  transition-property: all;
+}
+.duration-500 {
+  transition-duration: 500ms;
+}
+.ease-in-out {
+  transition-timing-function: ease-in-out;
+}
+  
+.scroll-sync-group {
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
+}
+
+body{
+  cursor: none;
+}
+
+.frame-transition {
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* Add to your style section */
+.screenshot-container {
+  position: relative;
+  z-index: 1;
+}
+.frame-container {
+  position: relative;
+  z-index: 2;
+}
