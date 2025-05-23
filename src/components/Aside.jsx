@@ -16,7 +16,6 @@ const Aside = ({ activeSection }) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
-      // Clear any hash from URL
       window.history.replaceState(null, null, " ");
     }
   };

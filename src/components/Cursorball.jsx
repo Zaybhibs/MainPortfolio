@@ -15,7 +15,7 @@ const CursorBall = () => {
     };
 
     const animate = () => {
-      ballX += (mouseX - ballX) * 0.15; // smoothing factor
+      ballX += (mouseX - ballX) * 0.15;
       ballY += (mouseY - ballY) * 0.15;
 
       if (cursorRef.current) {
@@ -48,7 +48,6 @@ const CursorBall = () => {
         top: 0,
       }}
     >
-      {/* Inner ball */}
       <div
         className="bg-[#3c267d] rounded-full"
         style={{

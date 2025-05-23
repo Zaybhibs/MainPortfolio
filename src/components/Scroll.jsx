@@ -111,16 +111,11 @@ const Scroll = () => {
       className="relative bg-white md:left-28 left-5 items-center md:py-16 px-4 mt-[122rem] md:mt-[109rem] md:min-h-[150vh]"
       // style={{ marginTop: "109rem", minHeight: "150vh" }}
     >
-      {/* Section Title */}
       <div data-aos="flip-up" className="mb-10">
         <h2 className="md:text-4xl text-xl md:text-center font-semibold text-gray-900">
           Solution
         </h2>
       </div>
-
-      {/* <div className="md:hidden shadow-2xl shadow-black w-[350px] ">
-        <img src={mobilescreenshot} alt="Mobile view" />
-      </div> */}
 
       <div className="block md:hidden">
         <div className="relative w-72 h-[30rem] top-10 mx-auto">
@@ -145,9 +140,7 @@ const Scroll = () => {
       </div>
 
       <div className=" hidden md:flex gap-20 relative">
-        {/* Main content container */}
         <div className="w-full  max-w-2xl">
-          {/* Original Screenshot - fades out when entering frame mode */}
           {!isInFrame && (
             <div
               className="transition-all shadow-2xl shadow-black duration-[1200ms]"
@@ -173,7 +166,6 @@ const Scroll = () => {
             </div>
           )}
 
-          {/* Frame - becomes fully visible when entering frame mode */}
           <div
             className={`${
               isInFrame
@@ -201,7 +193,6 @@ const Scroll = () => {
                   objectFit: "cover",
                 }}
               />
-              {/* Scrollable screenshot area - hidden scrollbar */}
               <div
                 ref={frameContentRef}
                 className="absolute inset-0 overflow-y-auto hide-scrollbar"
@@ -228,7 +219,6 @@ const Scroll = () => {
                 />
               </div>
             </div>
-            {/* mobile */}
             <div className="block">
               <div className="relative w-72 h-[30rem] top-10 mx-auto">
                 <img
@@ -251,7 +241,6 @@ const Scroll = () => {
           </div>
         </div>
 
-        {/* Text Content */}
         <div className="mt-10 w-60 space-y-16">
           <div className="bg-purple-50 p-6 rounded-xl">
             <h3 className="font-bold text-lg mb-2">Highlight the product</h3>

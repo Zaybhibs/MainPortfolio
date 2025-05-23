@@ -19,7 +19,7 @@ const Popup = ({ onClose }) => {
 
     if (!validateEmail(email)) {
       alert("Please enter a valid email address.");
-      return; // Stop submission if email is invalid
+      return;
     }
 
     const templateParams = {
@@ -31,15 +31,14 @@ const Popup = ({ onClose }) => {
 
     emailjs
       .send(
-        "service_2dumhc5", // Replace with your EmailJS service ID
-        "template_d2iuzyb", // Replace with your EmailJS template ID
+        "service_2dumhc5", //myservice ID
+        "template_d2iuzyb", // mytemplate ID
         templateParams,
-        "Tw1Hbm-M-8LxgMywA" // Replace with your EmailJS user ID
+        "Tw1Hbm-M-8LxgMywA" // myuser ID
       )
       .then(
         (result) => {
           setSuccessMessage("Your message has been sent successfully!");
-          // Clear form fields after successful submission
           setName("");
           setEmail("");
           setSubject("");

@@ -34,11 +34,9 @@ const Home = () => {
 
   const [popupVisible, setPopupVisible] = useState(false);
 
-  // Function to toggle the popup visibility
   const togglePopup = () => {
     setPopupVisible(!popupVisible);
   };
-  // Function to close the popup
   const onClose = () => {
     setPopupVisible(false);
   };
@@ -76,7 +74,7 @@ const Home = () => {
         </div>
       ) : (
         <div className="flex">
-          {/* <Cursorball /> */}
+          <Cursorball />
           <div className=" hidden xl:fixed xl:flex top-0 left-0 h-full w-[310px] border-r-2 border-r-slate-200 px-12 pt-10">
             <Aside activeSection={activeSection} />
           </div>

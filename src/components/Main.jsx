@@ -26,7 +26,7 @@ const Main = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev === 0 ? 1 : 0));
-    }, 3000); // Switch every 3 seconds
+    }, 3000);
 
     return () => clearInterval(interval);
   }, []);
@@ -67,7 +67,6 @@ const Main = () => {
   const [ideathree, setIdeathree] = useState("");
   const [ideafour, setIdeafour] = useState("");
 
-  // Text content
   const texts = {
     greeting: "Hello, I'm Zainab!",
     design: "I design and develop",
@@ -83,11 +82,9 @@ const Main = () => {
     ideasthree: "Then, an analysis and a",
     letsfour: "direction",
   };
-  // Fast animation speed (50ms per character)
   const typingSpeed = 50;
 
   useEffect(() => {
-    // Greeting animation
     let greetingTimeout;
     if (greetingText.length < texts.greeting.length) {
       greetingTimeout = setTimeout(() => {
@@ -95,7 +92,6 @@ const Main = () => {
       }, typingSpeed);
     }
 
-    // Design/Develop animation (starts after greeting completes)
     let designTimeout;
     if (greetingText.length === texts.greeting.length) {
       if (designText.length < texts.design.length) {
@@ -105,7 +101,6 @@ const Main = () => {
       }
     }
 
-    // Websites animation (starts after design completes)
     let websitesTimeout;
     if (designText.length === texts.design.length) {
       if (websitesText.length < texts.websites.length) {
@@ -165,8 +160,6 @@ const Main = () => {
       clearTimeout(thirdtwotimeout);
     };
   }, [showIdeas, ideathree, ideafour, greetingText, designText, websitesText]);
-
-  // Calculate positions for styled name
   const nameStart = texts.greeting.indexOf("Zainab");
   const beforeName = greetingText.substring(0, nameStart);
   const showName = greetingText.length > nameStart;
@@ -183,19 +176,15 @@ const Main = () => {
           className="w-32 h-32 rounded-full object-cover"
         />
       </div>
-      {/* Gradient box */}
       <div
         className="absolute top-16 xl:top-4 md:left-72  xl:left-60 left-5 bg-gradient-to-r from-purple-700 to-emerald-100 w-14 h-14 xl:w-20 xl:h-20 rounded-md animate-pulse shadow-lg "
         data-aos="fade-right"
       />
 
-      {/* Animated text sections */}
-
       <div
         className="absolute top-24 xl:left-72 left-16 md:left-56 space-y-5"
         data-aos="fade-up"
       >
-        {/* Line 01 - Greeting */}
         <div className="flex items-center md:gap-3 gap-1">
           <h1 className=" md:text-2xl text-gray-400">01</h1>
           <h1 className="text-2xl md:text-3xl xl:text-6xl font-medium md:font-normal">
@@ -212,7 +201,6 @@ const Main = () => {
           </h1>
         </div>
 
-        {/* Line 02 - Design/Develop */}
         <div className="flex items-center md:gap-3 gap-1">
           <h1 className="md:text-2xl text-gray-500">02</h1>
           <h2 className="text-2xl md:text-3xl xl:text-6xl font-medium md:font-normal">
@@ -220,32 +208,27 @@ const Main = () => {
             {designText.substring(0, 2)} {/* "I " */}
             {designText.length > 2 && (
               <span className="text-purple-700 font-medium">
-                {designText.substring(2, 8)} {/* "design" */}
+                {designText.substring(2, 8)}
                 {designText.length >= 8 && (
                   <HiMiniPaintBrush className="inline w-4 md:pt-2 md:w-6 text-black" />
                 )}
               </span>
             )}
-            {/* " and " */}
             {designText.length > 8 && designText.substring(8, 13)}
-            {/* "develop" */}
             {designText.length > 13 && (
               <span className="text-purple-700 font-medium">
                 {designText.substring(13)}
               </span>
             )}
-            {/* Laptop icon (after full line is typed) */}
             {designText.length >= texts.design.length && (
               <FaLaptopCode className="inline md:ml-2 w-6  md:pt-2" />
             )}
-            {/* Cursor blink during typing */}
             {designText.length < texts.design.length && (
               <span className="inline-block w-1 h-12 bg-gray-500 ml-1 animate-blink" />
             )}
           </h2>
         </div>
 
-        {/* Line 03 - Websites */}
         <div className="flex items-center md:gap-10 gap-3">
           <h1 className="md:text-2xl text-gray-400">03</h1>
           <h2 className="text-2xl md:text-3xl xl:text-6xl font-medium md:font-normal">
@@ -319,7 +302,6 @@ const Main = () => {
       <div className="absolute top-[35rem]">
         <div
           className="absolute top-24 md:top-4 left-4 md:left-24 bg-gradient-to-r from-purple-700 to-emerald-100  w-12 h-12 md:w-16 md:h-16 rounded-md animate-pulse shadow-lg "
-          // style={{ willChange: "transform, opacity" }}
           data-aos="fade-up"
         />
         <div
