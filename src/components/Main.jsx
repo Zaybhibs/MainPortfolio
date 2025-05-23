@@ -4,17 +4,31 @@ import "aos/dist/aos.css";
 import { FaLaptopCode } from "react-icons/fa6";
 import { HiMiniPaintBrush } from "react-icons/hi2";
 import { FaArrowDown } from "react-icons/fa6";
-import pexel from "../assets/mybabypic.jpg";
+import pexel from "../assets/Image__2_-removebg-preview.png";
 import { FaRegLightbulb } from "react-icons/fa6";
 import { MdReportProblem } from "react-icons/md";
 import "../index.css";
+import mypic from "../assets/mybabypic.jpg";
+import blog from "../assets/carouselone.png";
+import ecommerce from "../assets/frameEcommercepreview.png";
+import { motion } from "framer-motion";
 
 const Main = () => {
   const mainRef = useRef(null);
   const triggerRef = useRef(null);
 
   useEffect(() => {
-    AOS.init({ duration: 3000 });
+    AOS.init({ duration: 1000 });
+  }, []);
+
+  const [currentImage, setCurrentImage] = useState(0); // 0 for first image, 1 for second
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev === 0 ? 1 : 0));
+    }, 3000); // Switch every 3 seconds
+
+    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
@@ -117,40 +131,14 @@ const Main = () => {
       }
     }
 
-    // let thirdtimeout;
-    // if (ideathree.length < third.ideasthree.length) {
-    //   thirdtimeout = setTimeout(() => {
-    //     setIdeathree(third.ideasthree.substring(0, ideathree.length + 1));
-    //   }, typingSpeed);
-    // }
-
-    // let thirdtwotimeout;
-    // if (ideathree.length === third.ideasthree.length) {
-    //   if (ideafour.length < third.letsfour.length) {
-    //     thirdtwotimeout = setTimeout(() => {
-    //       setIdeafour(third.letsfour.substring(0, ideafour.length + 1));
-    //     }, typingSpeed);
-    //   }
-    // }
-
     return () => {
       clearTimeout(greetingTimeout);
       clearTimeout(designTimeout);
       clearTimeout(websitesTimeout);
       clearTimeout(ideatimeout);
       clearTimeout(ideatwotimeout);
-      // clearTimeout(thirdtimeout);
-      // clearTimeout(thirdtwotimeout);
     };
-  }, [
-    greetingText,
-    designText,
-    websitesText,
-    idea,
-    ideatwo,
-    // ideathree,
-    // ideafour,
-  ]);
+  }, [greetingText, designText, websitesText, idea, ideatwo]);
 
   useEffect(() => {
     let thirdtimeout, thirdtwotimeout;
@@ -187,19 +175,30 @@ const Main = () => {
   const nameStartss = third.ideasthree.indexOf("Then, an analysis and a");
   const showNamess = ideathree.length > nameStartss;
   return (
-    <div ref={mainRef} className="relative top-28">
+    <div ref={mainRef} className="relative xl:top-28 top-32">
+      <div className=" absolute -top-20 left-36 md:left-72 w-32 h-32 bg-purple-700 rounded-full xl:hidden">
+        <img
+          src={pexel}
+          alt=""
+          className="w-32 h-32 rounded-full object-cover"
+        />
+      </div>
       {/* Gradient box */}
       <div
-        className="absolute top-4 left-60 bg-gradient-to-r from-purple-700 to-emerald-100 w-20 h-20 rounded-md animate-pulse shadow-lg "
+        className="absolute top-16 xl:top-4 md:left-72  xl:left-60 left-5 bg-gradient-to-r from-purple-700 to-emerald-100 w-14 h-14 xl:w-20 xl:h-20 rounded-md animate-pulse shadow-lg "
         data-aos="fade-right"
       />
 
       {/* Animated text sections */}
-      <div className="absolute top-24 left-72 space-y-5" data-aos="fade-up">
+
+      <div
+        className="absolute top-24 xl:left-72 left-16 md:left-56 space-y-5"
+        data-aos="fade-up"
+      >
         {/* Line 01 - Greeting */}
-        <div className="flex items-center gap-3">
-          <h1 className="text-2xl text-gray-400">01</h1>
-          <h1 className="text-6xl font-normal">
+        <div className="flex items-center md:gap-3 gap-1">
+          <h1 className=" md:text-2xl text-gray-400">01</h1>
+          <h1 className="text-2xl md:text-3xl xl:text-6xl font-medium md:font-normal">
             <span className="text-gray-500 font-medium">&lt;</span>
             {beforeName}
             {showName && (
@@ -214,16 +213,16 @@ const Main = () => {
         </div>
 
         {/* Line 02 - Design/Develop */}
-        <div className="flex items-center gap-3">
-          <h1 className="text-2xl text-gray-500">02</h1>
-          <h2 className="text-6xl font-normal">
+        <div className="flex items-center md:gap-3 gap-1">
+          <h1 className="md:text-2xl text-gray-500">02</h1>
+          <h2 className="text-2xl md:text-3xl xl:text-6xl font-medium md:font-normal">
             <span className="text-gray-500 font-medium">&lt;</span>
             {designText.substring(0, 2)} {/* "I " */}
             {designText.length > 2 && (
               <span className="text-purple-700 font-medium">
                 {designText.substring(2, 8)} {/* "design" */}
                 {designText.length >= 8 && (
-                  <HiMiniPaintBrush className="inline  pt-2 w-6 text-black" />
+                  <HiMiniPaintBrush className="inline w-4 md:pt-2 md:w-6 text-black" />
                 )}
               </span>
             )}
@@ -237,7 +236,7 @@ const Main = () => {
             )}
             {/* Laptop icon (after full line is typed) */}
             {designText.length >= texts.design.length && (
-              <FaLaptopCode className="inline ml-2 w-6  pt-2" />
+              <FaLaptopCode className="inline md:ml-2 w-6  md:pt-2" />
             )}
             {/* Cursor blink during typing */}
             {designText.length < texts.design.length && (
@@ -247,23 +246,69 @@ const Main = () => {
         </div>
 
         {/* Line 03 - Websites */}
-        <div className="flex items-center gap-10">
-          <h1 className="text-2xl text-gray-400">03</h1>
-          <h2 className="text-6xl font-normal">
+        <div className="flex items-center md:gap-10 gap-3">
+          <h1 className="md:text-2xl text-gray-400">03</h1>
+          <h2 className="text-2xl md:text-3xl xl:text-6xl font-medium md:font-normal">
             {websitesText}
             {websitesText.length === texts.websites.length && (
               <span className="text-gray-500 font-medium">&gt;</span>
             )}
             {websitesText.length < texts.websites.length && (
-              <span className="inline-block w-1 h-12 bg-gray-500 ml-1 animate-blink" />
+              <span
+                className="inline-block w-1 h-12 bg-gray-500 ml-1 animate-blink"
+                style={{ willChange: "transform, opacity" }}
+              />
             )}
           </h2>
         </div>
-        <p className="font-medium text-xl py-5">Let me show You ..</p>
+        <p data-aos="fade-in" className="font-medium md:text-xl md:py-5">
+          Let me show You ..
+        </p>
       </div>
 
-      <div className=" absolute top-[27rem] left-14 w-[95%] h-28 bg-gradient-to-tr from-[#7e22ce29] to-white  animate-pulse"></div>
-      <div className="absolute top-[26rem] left-[35rem]">
+      <div className=" absolute top-80 md:top-[22rem] left-20 md:left-64 xl:hidden">
+        <div className="flex items-center justify-center space-x-4">
+          {currentImage === 0 && (
+            <motion.img
+              src={ecommerce}
+              loading="lazy"
+              alt="Blog Preview"
+              className="rounded-lg w-64 h-40"
+              initial={{ scale: 0.8, opacity: 1 }}
+              animate={{ scale: 1.2, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ duration: 1.5 }}
+            />
+          )}
+
+          {currentImage === 1 && (
+            <motion.img
+              src={blog}
+              loading="lazy"
+              alt="Ecommerce Preview"
+              className="rounded-lg w-64 h-40"
+              initial={{ scale: 0.8, opacity: 1 }}
+              animate={{ scale: 1.2, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ duration: 1.5 }}
+            />
+          )}
+        </div>
+      </div>
+
+      <div
+        className=" absolute md:top-[27rem] top-[32rem] xl:left-14  w-[100%] h-28 bg-gradient-to-t from-[#7e22ce29] to-white  md:bg-gradient-to-t md:from-[#7e22ce29] md:to-white  animate-pulse"
+        style={{ willChange: "transform, opacity" }}
+      ></div>
+      <div className=" md:hidden absolute top-[35rem] left-[2rem]">
+        <div className="flex justify-center mx-auto items-center ">
+          <div className="bg-purple-700 text-white w-10 rounded-md h-10 text-3xl  animate-bounce">
+            <FaArrowDown className=" text-white mx-auto" />
+          </div>
+        </div>
+      </div>
+
+      <div className=" hidden md:block absolute top-[26rem] left-[2rem] xl:left-[35rem]">
         <div className="flex justify-center mx-auto items-center gap-3 bg-white  py-4 px-8 rounded-md ">
           <h2 className="font-bold">Learn More</h2>
           <div className="bg-purple-700 text-white w-10 rounded-md h-10 text-3xl  animate-bounce">
@@ -273,32 +318,38 @@ const Main = () => {
       </div>
       <div className="absolute top-[35rem]">
         <div
-          className="absolute top-4 left-24 bg-gradient-to-r from-purple-700 to-emerald-100 w-16 h-16 rounded-md animate-pulse shadow-lg "
+          className="absolute top-24 md:top-4 left-4 md:left-24 bg-gradient-to-r from-purple-700 to-emerald-100  w-12 h-12 md:w-16 md:h-16 rounded-md animate-pulse shadow-lg "
+          // style={{ willChange: "transform, opacity" }}
           data-aos="fade-up"
         />
         <div
           data-aos="fade-up"
-          className="absolute left-32 top-[3rem] h-20 w-[370px] rounded-full opacity-85 z-10"
+          className="absolute md:left-32 top-[7rem] left-7 md:top-[3rem] h-20 w-[270px] rounded-full opacity-85 z-10"
         >
           <div className="absolute inset-3 blur-sm rounded-sm bg-gradient-to-br from-white to-white"></div>
 
           <div className="relative flex flex-col gap-3 px-4 py-2">
-            <div className="flex items-center w-[400px] gap-5">
-              <h1 className="z-10 text-gray-500 text-2xl">01</h1>
-              <h1 className="font-bold text-2xl">
+            <div className="flex items-center w-[400px] gap-2 md:gap-5">
+              <h1 className="z-10 text-gray-500 md:text-2xl">01</h1>
+              <h1 className="font-bold md:text-2xl">
                 {showNames && (
                   <>
                     {idea.substring(nameStarts)}
                     {idea.length < text.ideas.length && (
-                      <span className="inline-block w-1 h-6 bg-gray-500 ml-1 animate-blink" />
+                      <span
+                        className="inline-block w-1 h-6 bg-gray-500 ml-1 animate-blink"
+                        // style={{ willChange: "transform, opacity" }}
+                      />
                     )}
                   </>
                 )}
               </h1>
             </div>
-            <div className="flex items-center gap-5">
-              <h1 className="text-2xl text-gray-500">02</h1>
-              <h2 className="text-2xl text-purple-700 font-bold">{ideatwo}</h2>
+            <div className="flex items-center gap-2 md:gap-5">
+              <h1 className="md:text-2xl text-gray-500">02</h1>
+              <h2 className="md:text-2xl text-purple-700 font-bold">
+                {ideatwo}
+              </h2>
             </div>
           </div>
         </div>
@@ -306,13 +357,13 @@ const Main = () => {
       <div
         data-aos="fade-right"
         data-aos-duration="200"
-        className="absolute top-[48rem] left-28 "
+        className="absolute top-[51rem] md:top-[48rem] md:left-28 left-5 "
       >
         <div className="flex gap-3 items-center">
-          <div className="w-14 h-14 bg-[#6c6685]  text-center rounded-full">
-            <h1 className="font-bold text-white pt-2 text-3xl">B</h1>
+          <div className="md:w-14 md:h-14 w-10 h-10 bg-[#6c6685]  text-center rounded-full">
+            <h1 className="font-bold text-white pt-2 md:text-3xl">B</h1>
           </div>
-          <div className="bg-[#e9d5ffa3] border-b-purple-700 tracking-normal border-2 py-5  px-8 font-medium text-lg space-y-2 rounded-lg">
+          <div className="bg-[#e9d5ffa3] border-b-purple-700 tracking-normal border-2 md:py-5 w-[300px] py-2 px-3 md:w-[700px]  md:px-8 font-medium md:text-lg space-y-2 rounded-lg">
             <h3>I need a website for my food blog, Bibi's EpicureanBlog.</h3>
             <h3>
               We specialize in bringing delicious stories to life, one webpage
@@ -322,47 +373,14 @@ const Main = () => {
         </div>
       </div>
 
-      {/* <div className="absolute top-[51rem]">
-        <div
-          className="absolute top-4 left-24 bg-gradient-to-r from-purple-700 to-emerald-100 w-16 h-16 rounded-md animate-pulse shadow-lg"
-          data-aos="fade-up"
-        />
-        <div
-          data-aos="fade-up"
-          className="absolute left-32 top-[3rem] h-20 w-[370px] rounded-full opacity-85 z-10"
-        >
-          <div className="absolute inset-3 blur-sm rounded-sm bg-gradient-to-br from-white to-white"></div>
-
-          <div className="relative flex flex-col gap-3 px-4 py-2">
-            <div className="flex items-center w-[400px] gap-5">
-              <h1 className="z-10 text-gray-500 text-2xl">03</h1>
-              <h1 className="font-bold text-2xl">
-                {showNamess && (
-                  <>
-                    {ideathree.substring(nameStartss)}
-                    {ideathree.length < third.ideasthree.length && (
-                      <span className="inline-block w-1 h-6 bg-gray-500 ml-1 animate-blink" />
-                    )}
-                  </>
-                )}
-              </h1>
-            </div>
-            <div className="flex items-center gap-5">
-              <h1 className="text-2xl text-gray-500">04</h1>
-              <h2 className="text-2xl text-purple-700 font-bold">{ideafour}</h2>
-            </div>
-          </div>
-        </div>
-      </div> */}
-
       <div
         data-aos="fade-left"
         data-aos-duration="200"
-        className="absolute top-[57rem] left-[30rem] "
+        className="absolute top-[61rem] md:top-[57rem] left-6 md:left-[30rem] "
         ref={triggerRef}
       >
         <div className="flex gap-3 items-center">
-          <div className="bg-[#e9d5ffa3] border-b-purple-700 tracking-normal border-2 py-5  px-8 font-medium text-lg space-y-2 rounded-lg">
+          <div className="bg-[#e9d5ffa3] border-b-purple-700 tracking-normal border-2 py-2 px-3 md:py-5 w-[300px] md:w-[700px] md:px-8 font-medium md:text-lg space-y-2 rounded-lg">
             <h3>Alright, great!</h3>
             <h3>
               I'll handle everything, first the design that I'll share with you.
@@ -370,11 +388,12 @@ const Main = () => {
             </h3>
             <h3>I'll develop your website and put it online!</h3>
           </div>
-          <div className="">
+          <div className="bg-purple-700 rounded-full">
             <img
               src={pexel}
+              loading="lazy"
               alt=""
-              className="w-14 h-14 rounded-full object-cover"
+              className="md:w-14 md:h-14 w-10 h-10 rounded-full object-cover"
             />
           </div>
         </div>
@@ -383,46 +402,49 @@ const Main = () => {
       <div
         data-aos="fade-right"
         data-aos-duration="200"
-        className="absolute top-[68rem] left-28 "
+        className="absolute top-[74rem] md:top-[68rem] md:left-28 left-5 "
       >
         <div className="flex gap-3 items-center">
-          <div className="w-14 h-14 bg-[#6c6685]  text-center rounded-full">
-            <h1 className="font-bold text-white pt-2 text-3xl">B</h1>
+          <div className="md:w-14 md:h-14 w-10 h-10 bg-[#6c6685]  text-center rounded-full">
+            <h1 className="font-bold text-white pt-2 md:text-3xl">B</h1>
           </div>
-          <div className="bg-[#e9d5ffa3] border-b-purple-700 tracking-normal border-2 py-5  px-8 font-medium text-lg space-y-2 rounded-lg">
+          <div className="bg-[#e9d5ffa3] border-b-purple-700 tracking-normal border-2 md:py-5  py-2 px-3 md:px-8 font-medium md:text-lg space-y-2 rounded-lg">
             <h3>Perfect, when do we start?</h3>
           </div>
         </div>
       </div>
-      <div className="absolute top-[75rem] left-[38rem] ">
+      <div className="absolute md:top-[75rem]  top-[80rem] left-48 md:left-[38rem] ">
         <p>Now!</p>
-        <div className="bg-purple-700 text-white w-10 rounded-md h-10 text-3xl mt-4  animate-bounce">
+        <div
+          className="bg-purple-700 text-white w-10 rounded-md h-10 text-3xl mt-4  animate-bounce"
+          style={{ willChange: "transform, opacity" }}
+        >
           <FaArrowDown className=" text-white mx-auto" />
         </div>
       </div>
       <div
-        data-aos="zoom-out-up"
-        className="absolute top-[87rem] left-32 scale"
+        data-aos="fade-in"
+        className="absolute md:top-[87rem] top-[87rem] md:left-32 left-5 "
       >
-        <div className="flex gap-7 ">
-          <div className="w-[50%] font-medium ">
-            <div className="flex gap-3 text-xl items-center mb-3">
-              <FaRegLightbulb className="text-2xl" />
+        <div className="md:flex gap-7 space-y-4">
+          <div className="md:w-[50%] w-[400px] md:font-medium ">
+            <div className="flex gap-3 md:text-xl items-center mb-3">
+              <FaRegLightbulb className="md:text-2xl" />
               <h2>Market Analysis</h2>
             </div>
-            <h2 className="text-xl tracking-wider">
+            <h2 className="md:text-xl tracking-wider">
               Food blogs are thriving, with a growing demand for new recipes,
               healthy options, and interactive experiences. Audiences seek more
               than just content—they want a platform that offers fresh recipes
               and an engaging, interactive user experience
             </h2>
           </div>
-          <div className="font-medium w-[50%] mx-7 ">
+          <div className="md:font-medium md:w-[50%] w-[400px] md:mx-7 ">
             <div className="flex gap-3 items-center mb-3">
-              <MdReportProblem className="text-2xl" />
-              <h2 className="text-xl">Problem</h2>
+              <MdReportProblem className="md:text-2xl" />
+              <h2 className="md:text-xl">Problem</h2>
             </div>
-            <h2 className="text-xl tracking-wider">
+            <h2 className="md:text-xl tracking-wider">
               Many food blogs lack interactivity and fresh content. The
               challenge is creating a platform with new recipes and engaging
               user experiences.

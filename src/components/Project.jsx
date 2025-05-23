@@ -21,54 +21,60 @@ const Project = () => {
         setCurrentIndex((prev) => (prev + 1) % images2.length);
         setCurrentIndex1((prev) => (prev + 1) % images.length);
       }
-    }, 4000);
+    }, 1000);
 
     return () => clearInterval(interval);
   }, [isHovered]);
 
   return (
-    <div className="relative left-20 mt-[900px]">
+    <div className="relative md:left-20 md:mt-[950px] mt-[250px] px-4">
       <div className="flex gap-2 items-center">
         <h1 className="text-4xl font-bold">Projects&gt;</h1>
+
         <BsStars className="text-3xl text-purple-700" />
       </div>
+      <p className="note pt-2">
+        [Demo limited - free database expired] Fully functional code available
+        in repository
+      </p>
 
-      <div className="mt-10 flex items-center">
+      <div className="mt-10 grid  md:grid-cols-2">
         {/* BibiCart Project */}
         <div
-          className="bg-gradient-to-b from-green-100 to-gray-200 py-6 px-4 w-[50%]"
+          className="bg-gradient-to-b from-green-100 to-gray-200 py-6 px-4 rounded-lg"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
           <h1 className="text-black text-xl font-medium mb-6">.BibiCart</h1>
           <div className="overflow-hidden w-full h-64 relative flex justify-center items-center scales">
             {isHovered ? (
-              <div className="flex w-full justify-center pt-[48px] gap-10 h-full ">
+              <div className="flex w-full justify-center pt-[95px] md:pt-[48px] gap-4 h-full">
                 <img
                   src={images2[0]}
                   alt="Slide 1"
-                  className="w-[41%] h-[76%] object-cover"
+                  className="w-[50%] h-[73%] md:w-[48%] md:h-[76%] object-cover"
                 />
                 <img
                   src={images2[1]}
                   alt="Slide 2"
-                  className="w-[41%] h-[76%] object-cover"
+                  className=" w-[50%] h-[73%] md:w-[48%] md:h-[76%] object-cover"
                 />
               </div>
             ) : (
               <img
                 src={images2[currentIndex]}
                 alt={`Slide ${currentIndex + 1}`}
-                className="w-[70%] h-full object-cover  transition-opacity duration-1000 ease-in-out"
+                className="md:w-[60%] md:h-[80%] w-[85%] h-[73%] object-cover transition-opacity duration-1000 ease-in-out"
               />
             )}
           </div>
           <div className="mt-7">
             <FaExternalLinkSquareAlt />
-            <h3 className="text-2xl font-medium underline">
+            <h3 className="md:text-2xl font-medium underline">
               <a
                 href="https://ecommerce-brown-rho-43.vercel.app/"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 Link to the platform <br /> Ecommerce
               </a>
@@ -78,7 +84,7 @@ const Project = () => {
 
         {/* BibiEpicurenBlog Project */}
         <div
-          className="bg-gradient-to-b from-yellow-100 to-green-50 py-6 px-4 w-[50%]"
+          className="bg-gradient-to-b from-yellow-100 to-green-50 py-6 px-4 rounded-lg"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
@@ -87,32 +93,33 @@ const Project = () => {
           </h1>
           <div className="overflow-hidden w-full h-64 relative flex justify-center items-center scales">
             {isHovered ? (
-              <div className="flex w-full justify-center pt-[48px] gap-8 h-full  ">
+              <div className="flex w-full justify-center pt-[95px] md:pt-[48px] gap-4 h-full">
                 <img
                   src={images[0]}
                   alt="Slide 1"
-                  className="w-[41%] h-[76%] object-cover"
+                  className=" w-[50%] h-[73%] md:w-[48%] md:h-[76%] object-cover"
                 />
                 <img
                   src={images[1]}
                   alt="Slide 2"
-                  className="w-[41%] h-[76%] object-cover pr-10"
+                  className=" w-[50%] h-[73%] md:w-[48%] md:h-[76%] object-cover"
                 />
               </div>
             ) : (
               <img
                 src={images[currentIndex1]}
                 alt={`Slide ${currentIndex1 + 1}`}
-                className="w-[70%] h-full object-cover  transition-opacity duration-1000 ease-in-out"
+                className="md:w-[60%] md:h-[80%] w-[85%] h-[73%] object-cover transition-opacity duration-1000 ease-in-out"
               />
             )}
           </div>
           <div className="mt-7">
             <FaExternalLinkSquareAlt />
-            <h3 className="text-2xl font-medium underline">
+            <h3 className="md:text-2xl font-medium underline">
               <a
                 href="https://bibis-epicurean-blog.vercel.app/"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 Link to the platform <br /> Food Blog Website
               </a>

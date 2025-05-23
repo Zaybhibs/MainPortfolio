@@ -47,7 +47,7 @@ const Scroll = () => {
   }, []);
 
   useEffect(() => {
-    AOS.init({ duration: 3000 });
+    AOS.init({ duration: 1000 });
 
     const handleScroll = () => {
       if (sectionRef.current) {
@@ -92,7 +92,7 @@ const Scroll = () => {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isInFrame, lastScrollY, isScrollingUp]);
 
@@ -108,17 +108,43 @@ const Scroll = () => {
   return (
     <div
       ref={sectionRef}
-      className="relative bg-white left-28 items-center py-16 px-4"
-      style={{ marginTop: "109rem", minHeight: "150vh" }}
+      className="relative bg-white md:left-28 left-5 items-center md:py-16 px-4 mt-[122rem] md:mt-[109rem] md:min-h-[150vh]"
+      // style={{ marginTop: "109rem", minHeight: "150vh" }}
     >
       {/* Section Title */}
       <div data-aos="flip-up" className="mb-10">
-        <h2 className="text-4xl text-center font-semibold text-gray-900">
+        <h2 className="md:text-4xl text-xl md:text-center font-semibold text-gray-900">
           Solution
         </h2>
       </div>
 
-      <div className="flex gap-20 relative">
+      {/* <div className="md:hidden shadow-2xl shadow-black w-[350px] ">
+        <img src={mobilescreenshot} alt="Mobile view" />
+      </div> */}
+
+      <div className="block md:hidden">
+        <div className="relative w-72 h-[30rem] top-10 mx-auto">
+          <img
+            src={mobileframe}
+            loading="lazy"
+            alt="Mobile Frame"
+            className="w-full h-full object-cover"
+          />
+          <div
+            ref={frameContentRefs}
+            className="absolute inset-0 top-[7%] bottom-[7%] left-[16%] right-[16%] overflow-y-auto hide-scrollbar"
+          >
+            <img
+              src={mobilescreenshot}
+              loading="lazy"
+              alt="Mobile Screenshot"
+              className="w-full h-auto"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className=" hidden md:flex gap-20 relative">
         {/* Main content container */}
         <div className="w-full  max-w-2xl">
           {/* Original Screenshot - fades out when entering frame mode */}
@@ -129,16 +155,19 @@ const Scroll = () => {
                 transform: `translateY(0px) scale(1)`,
                 opacity: 1,
                 transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
+                willChange: "transform, opacity",
               }}
             >
               <img
                 src={screenshot}
+                loading="lazy"
                 alt="Website Screenshot"
                 className="w-full"
                 style={{
                   transform: "translateY(0px)",
                   transition: "transform 1.2s cubic-bezier(0.22, 1, 0.36, 1)",
                   minHeight: "150%",
+                  willChange: "transform, opacity",
                 }}
               />
             </div>
@@ -156,11 +185,13 @@ const Scroll = () => {
               opacity: isInFrame ? 1 : 0,
               pointerEvents: isInFrame ? "auto" : "none",
               transform: isInFrame ? "translateY(0)" : "translateY(20px)",
+              willChange: "transform, opacity",
             }}
           >
             <div className="relative">
               <img
                 src={frame}
+                loading="lazy"
                 alt="Display Frame"
                 className="w-full"
                 style={{
@@ -181,6 +212,7 @@ const Scroll = () => {
                   right: "10%",
                   padding: "1rem",
                   transition: "opacity 1s ease",
+                  willChange: "transform, opacity",
                 }}
               >
                 <img
@@ -191,6 +223,7 @@ const Scroll = () => {
                     opacity: framedScreenshotOpacity,
                     minHeight: "150%",
                     transition: "opacity 1s ease",
+                    willChange: "transform, opacity",
                   }}
                 />
               </div>

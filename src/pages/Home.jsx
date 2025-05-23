@@ -9,51 +9,106 @@ import Cursorball from "../components/Cursorball";
 import Cost from "../components/Cost";
 import Project from "../components/Project";
 import About from "../components/About";
+import logo from "../assets/logo1.png";
+import SmallSideBar from "../components/SmallSideBar";
+import Popup from "../components/Popup";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
-    AOS.init({ duration: 3000 });
+    AOS.init({ duration: 1000 });
   }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 1500);
 
     return () => clearTimeout(timer);
+  }, []);
+  // useEffect(() => {
+  //   setLoading(false);
+  // }, []);
+
+  const [popupVisible, setPopupVisible] = useState(false);
+
+  // Function to toggle the popup visibility
+  const togglePopup = () => {
+    setPopupVisible(!popupVisible);
+  };
+  // Function to close the popup
+  const onClose = () => {
+    setPopupVisible(false);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
+      const homeSection = document.getElementById("home");
+      const projectSection = document.getElementById("project");
+      const aboutSection = document.getElementById("about");
+
+      if (scrollPosition < projectSection.offsetTop) {
+        setActiveSection("home");
+      } else if (scrollPosition < aboutSection.offsetTop) {
+        setActiveSection("project");
+      } else {
+        setActiveSection("about");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <>
       {loading ? (
-        <div className="fixed inset-0 flex items-center justify-center  bg-white">
-          <span
-            data-aos="zoom-out"
-            className="text-4xl font-extrabold text-purple-700 "
-          >
-            Zainab's Portfolio
-          </span>
+        <div className="md:fixed inset-0 flex items-center pt-80 md:pt-0 justify-center bg-white ">
+          <div className="flex animate-zoom-in-out ">
+            <img src={logo} alt="logo" className=" w-8 h-8" />
+            <h2 className="font-bold text-4xl pt-2 text-purple-700">
+              BibiCodes
+            </h2>
+          </div>
         </div>
       ) : (
         <div className="flex">
-          <Cursorball />
-          <div className="fixed top-0 left-0 h-full w-[310px] border-r-2 border-r-slate-200 px-12 pt-10">
-            <Aside />
+          {/* <Cursorball /> */}
+          <div className=" hidden xl:fixed xl:flex top-0 left-0 h-full w-[310px] border-r-2 border-r-slate-200 px-12 pt-10">
+            <Aside activeSection={activeSection} />
+          </div>
+          <div className="fixed z-50 xl:hidden">
+            <SmallSideBar
+              activeSection={activeSection}
+              togglePopup={togglePopup}
+            />
           </div>
 
-          <div className="ml-[255px] flex-1 pt-10">
-            <div className="fixed right-7 z-50">
-              {" "}
-              <Navbar />
+          <div
+            className={`xl:ml-[255px] md:flex-1 pt-10  transition-filter duration-300 ${
+              popupVisible ? "blur-sm pointer-events-none select-none" : ""
+            }`}
+          >
+            <div className="hidden xl:flex  lg:fixed right-7 z-50  ">
+              <Navbar togglePopup={togglePopup} />
             </div>
-            <Main />
-            <Scroll />
+
+            <section id="home">
+              <Main />
+            </section>
+            <Scroll className=" will-change-transform" />
             <Cost />
-            <Project id="project" />
-            <About />
+            <section id="project">
+              <Project />
+            </section>
+            <section id="about">
+              <About />
+            </section>
           </div>
+          {popupVisible && <Popup onClose={onClose} />}
         </div>
       )}
     </>

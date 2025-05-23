@@ -5,6 +5,9 @@
  .scale:hover{
     animation: zoom-out 3s ease forwards;
     transition: transform 3s ease-in-out color 3s ease-in-out;
+    will-change: transform, opacity;
+
+    
 }
 @keyframes zoom-out {
     from {
@@ -18,6 +21,8 @@
 .scales:hover{
   animation: zoom-out 3s ease forwards;
   transition: transform 3s ease-in-out color 3s ease-in-out;
+  will-change: transform, opacity;
+
 }
 @keyframes zoom-out {
   from {
@@ -90,10 +95,10 @@
   scroll-behavior: smooth;
   overscroll-behavior: contain;
 }
-
+/* 
 body{
   cursor: none;
-}
+} */
 
 .frame-transition {
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
