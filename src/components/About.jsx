@@ -7,8 +7,8 @@ const About = () => {
 
   return (
     <div>
-      <div className="relative md:left-20 left-5  mt-[100px]">
-        <h1 className="font-bold md:text-4xl text-2xl">About&gt;</h1>
+      <div className="relative  xl:left-20 md:left-7 left-5  mt-[100px] mb-14">
+        <h1 className="font-bold xl:text-4xl text-2xl">About&gt;</h1>
         <h2 className="mt-4 md:text-xl  ">
           <span class="text-purple-700">class</span>{" "}
           <span class="text-yellow-500">Olusekun Zainab</span> &nbsp; &#123;

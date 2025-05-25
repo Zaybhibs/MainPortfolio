@@ -27,7 +27,7 @@ const Project = () => {
   }, [isHovered]);
 
   return (
-    <div className="relative md:left-20 md:mt-[950px] mt-[250px] px-4">
+    <div className="relative md:left-1 xl:left-20 md:mt-[200px] xl:mt-[950px] mt-[250px] px-4">
       <div className="flex gap-2 items-center">
         <h1 className="text-4xl font-bold">Projects&gt;</h1>
 
@@ -52,25 +52,25 @@ const Project = () => {
                 <img
                   src={images2[0]}
                   alt="Slide 1"
-                  className="w-[50%] h-[73%] md:w-[48%] md:h-[76%] object-cover"
+                  className="w-[50%] h-[73%]  xl:w-[48%] xl:h-[76%] md:w-[62%] md:h-[56%]  object-cover"
                 />
                 <img
                   src={images2[1]}
                   alt="Slide 2"
-                  className=" w-[50%] h-[73%] md:w-[48%] md:h-[76%] object-cover"
+                  className=" w-[50%] h-[73%]  xl:w-[48%] xl:h-[76%] md:w-[62%] md:h-[56%]  object-cover"
                 />
               </div>
             ) : (
               <img
                 src={images2[currentIndex]}
                 alt={`Slide ${currentIndex + 1}`}
-                className="md:w-[60%] md:h-[80%] w-[85%] h-[73%] object-cover transition-opacity duration-1000 ease-in-out"
+                className="md:w-[81%] md:h-[68%] xl:w-[60%] xl:h-[80%]   w-[85%] h-[73%] object-cover transition-opacity duration-1000 ease-in-out"
               />
             )}
           </div>
-          <div className="mt-7">
+          <div className="mt-7 lg:mt-5 xl:mt-7">
             <FaExternalLinkSquareAlt />
-            <h3 className="md:text-2xl font-medium underline">
+            <h3 className="md:text-xl xl:text-2xl font-medium underline">
               <a
                 href="https://ecommerce-brown-rho-43.vercel.app/"
                 target="_blank"
@@ -97,25 +97,25 @@ const Project = () => {
                 <img
                   src={images[0]}
                   alt="Slide 1"
-                  className=" w-[50%] h-[73%] md:w-[48%] md:h-[76%] object-cover"
+                  className=" w-[50%] h-[73%] xl:w-[48%] xl:h-[76%] md:w-[62%] md:h-[56%] object-cover"
                 />
                 <img
                   src={images[1]}
                   alt="Slide 2"
-                  className=" w-[50%] h-[73%] md:w-[48%] md:h-[76%] object-cover"
+                  className=" w-[50%] h-[73%] xl:w-[48%] xl:h-[76%] md:w-[62%] md:h-[56%] object-cover"
                 />
               </div>
             ) : (
               <img
                 src={images[currentIndex1]}
                 alt={`Slide ${currentIndex1 + 1}`}
-                className="md:w-[60%] md:h-[80%] w-[85%] h-[73%] object-cover transition-opacity duration-1000 ease-in-out"
+                className="md:w-[81%] md:h-[68%] xl:w-[60%] xl:h-[80%] w-[85%] h-[73%] object-cover transition-opacity duration-1000 ease-in-out"
               />
             )}
           </div>
-          <div className="mt-7">
+          <div className="mt-7 lg:mt-5 xl:mt-7">
             <FaExternalLinkSquareAlt />
-            <h3 className="md:text-2xl font-medium underline">
+            <h3 className="md:text-xl xl:text-2xl font-medium underline">
               <a
                 href="https://bibis-epicurean-blog.vercel.app/"
                 target="_blank"

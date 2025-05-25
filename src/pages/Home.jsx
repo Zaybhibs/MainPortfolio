@@ -75,10 +75,10 @@ const Home = () => {
       ) : (
         <div className="flex">
           <Cursorball />
-          <div className=" hidden xl:fixed xl:flex top-0 left-0 h-full w-[310px] border-r-2 border-r-slate-200 px-12 pt-10">
+          <div className="hidden lg:fixed lg:flex top-0 left-0 h-full lg:w-[253px] xl:w-[310px] border-r-2 border-r-slate-200 px-12 pt-10">
             <Aside activeSection={activeSection} />
           </div>
-          <div className="fixed z-50 xl:hidden">
+          <div className="fixed z-50 lg:hidden">
             <SmallSideBar
               activeSection={activeSection}
               togglePopup={togglePopup}
@@ -86,7 +86,7 @@ const Home = () => {
           </div>
 
           <div
-            className={`xl:ml-[255px] md:flex-1 pt-10  transition-filter duration-300 ${
+            className={` lg:ml-[250px] xl:ml-[255px] md:flex-1 pt-10  transition-filter duration-300 ${
               popupVisible ? "blur-sm pointer-events-none select-none" : ""
             }`}
           >

@@ -67,14 +67,14 @@ const Scroll = () => {
         const atTopOfFrame = frameContentRef.current?.scrollTop === 0;
 
         // Enter frame mode when scrolling down past 10% progress
-        if (clampedProgress > 0.1 && !isInFrame && !isScrollingUp) {
+        // Inside your handleScroll function, replace the conditions with:
+        const thresholdEnter = window.innerWidth >= 1280 ? 0.1 : 0.55; // XL screens use 0.1, others use 0.05
+        const thresholdExit = window.innerWidth >= 1280 ? 0.95 : 0.85; // XL screens use 0.95, others use 0.9
+
+        if (clampedProgress > thresholdEnter && !isInFrame && !isScrollingUp) {
           setIsInFrame(true);
-        }
-        // Exit frame mode when:
-        // - Scrolling up past 20% progress OR
-        // - At top of frame content and scrolling up
-        else if (
-          (clampedProgress <= 0.95 && isInFrame && isScrollingUp) ||
+        } else if (
+          (clampedProgress <= thresholdExit && isInFrame && isScrollingUp) ||
           (atTopOfFrame && isScrollingUp && isInFrame)
         ) {
           setIsInFrame(false);
@@ -108,11 +108,11 @@ const Scroll = () => {
   return (
     <div
       ref={sectionRef}
-      className="relative bg-white md:left-28 left-5 items-center md:py-16 px-4 mt-[122rem] md:mt-[109rem] md:min-h-[150vh]"
+      className="relative bg-white md:left-28 xl:left-28 lg:left-6 left-5 items-center md:py-16 px-4 mt-[122rem] md:mt-[109rem]  lg:min-h-[100vh] xl:min-h-[150vh]"
       // style={{ marginTop: "109rem", minHeight: "150vh" }}
     >
       <div data-aos="flip-up" className="mb-10">
-        <h2 className="md:text-4xl text-xl md:text-center font-semibold text-gray-900">
+        <h2 className="xl:text-4xl lg:text-2xl text-xl md:text-center font-semibold text-gray-900">
           Solution
         </h2>
       </div>
@@ -139,8 +139,8 @@ const Scroll = () => {
         </div>
       </div>
 
-      <div className=" hidden md:flex gap-20 relative">
-        <div className="w-full  max-w-2xl">
+      <div className=" hidden lg:flex xl:gap-20 lg:gap-8 relative">
+        <div className="w-full  xl:max-w-2xl lg:max-w-lg  ">
           {!isInFrame && (
             <div
               className="transition-all shadow-2xl shadow-black duration-[1200ms]"
@@ -155,7 +155,7 @@ const Scroll = () => {
                 src={screenshot}
                 loading="lazy"
                 alt="Website Screenshot"
-                className="w-full"
+                className="w-full  "
                 style={{
                   transform: "translateY(0px)",
                   transition: "transform 1.2s cubic-bezier(0.22, 1, 0.36, 1)",
@@ -169,7 +169,7 @@ const Scroll = () => {
           <div
             className={`${
               isInFrame
-                ? "flex  gap-10 relative top-[1050px] left-40"
+                ? "flex  xl:gap-10 relative xl:top-[1050px] lg:top-[630px] xl:left-40 lg:left-24"
                 : "opacity-0"
             } 
     flex justify-center transition-all duration-500 ease-out`}
@@ -185,23 +185,23 @@ const Scroll = () => {
                 src={frame}
                 loading="lazy"
                 alt="Display Frame"
-                className="w-full"
-                style={{
-                  width: "60vw",
-                  height: "80vh",
-                  minWidth: "800px",
-                  objectFit: "cover",
-                }}
+                className="w-full lg:min-w-[500px] lg:min-h-[400px] xl:min-w-[800px] xl:min-h-[600px]  lg:w-[30vw] lg:h-[30vh] xl:w-[60vw] xl:h-[80vh]    cover"
+                // style={{
+                //   width: "60vw",
+                //   height: "80vh",
+                //   minWidth: "800px",
+                //   objectFit: "cover",
+                // }}
               />
               <div
                 ref={frameContentRef}
-                className="absolute inset-0 overflow-y-auto hide-scrollbar"
+                className="absolute inset-0 xl:top-[11%] xl:bottom-[24%] xl:right-[17%] xl:left-[17%] lg:top-[11%] lg:bottom-[28%] lg:right-[17%] lg:left-[17%] overflow-y-auto hide-scrollbar"
                 style={{
-                  top: "10%",
-                  bottom: "24%",
-                  left: "10%",
-                  right: "10%",
-                  padding: "1rem",
+                  // top: "10%",
+                  // bottom: "24%",
+                  // left: "10%",
+                  // right: "10%",
+                  // padding: "1rem",
                   transition: "opacity 1s ease",
                   willChange: "transform, opacity",
                 }}
@@ -209,7 +209,7 @@ const Scroll = () => {
                 <img
                   src={screenshot}
                   alt="Website Screenshot in Frame"
-                  className="w-full"
+                  className="w-full lg:min-h-auto"
                   style={{
                     opacity: framedScreenshotOpacity,
                     minHeight: "150%",
@@ -220,7 +220,7 @@ const Scroll = () => {
               </div>
             </div>
             <div className="block">
-              <div className="relative w-72 h-[30rem] top-10 mx-auto">
+              <div className="relative w-72 lg:h-[27rem] xl:h-[30rem] top-10 mx-auto">
                 <img
                   src={mobileframe}
                   alt="Mobile Frame"
@@ -228,7 +228,7 @@ const Scroll = () => {
                 />
                 <div
                   ref={frameContentRefs}
-                  className="absolute inset-0 top-[7%] bottom-[7%] left-[16%] right-[16%] overflow-y-auto hide-scrollbar"
+                  className="absolute inset-0 top-[7%] bottom-[7%] left-[16%] right-[16%] lg:top-[7%] lg:bottom-[7%] lg:left-[20%] lg:right-[20%]  xl:top-[7%] xl:bottom-[7%] xl:left-[16%] xl:right-[16%] overflow-y-auto hide-scrollbar"
                 >
                   <img
                     src={mobilescreenshot}
@@ -241,7 +241,7 @@ const Scroll = () => {
           </div>
         </div>
 
-        <div className="mt-10 w-60 space-y-16">
+        <div className="mt-10 xl:w-60 lg:w-40 space-y-16">
           <div className="bg-purple-50 p-6 rounded-xl">
             <h3 className="font-bold text-lg mb-2">Highlight the product</h3>
             <p className="text-gray-700">

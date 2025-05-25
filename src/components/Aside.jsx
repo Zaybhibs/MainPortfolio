@@ -22,12 +22,12 @@ const Aside = ({ activeSection }) => {
 
   return (
     <div className="fixed ">
-      <div className="mb-20 bg-purple-700 w-48 h-48 rounded-full">
+      <div className="mb-20 bg-purple-700 xl:w-48 xl:h-48 rounded-full">
         <img
           src={pexel}
           loading="lazy"
           alt=""
-          className="w-48 h-48 rounded-full object-cover"
+          className=" w-40 h-40 xl:w-48 xl:h-48 rounded-full object-cover"
         />
       </div>
 
@@ -38,7 +38,7 @@ const Aside = ({ activeSection }) => {
             e.preventDefault();
             scrollToSection("home");
           }}
-          className={`font-bold text-[22px] ${
+          className={`font-bold  xl:text-[22px] ${
             activeSection === "home"
               ? "text-purple-700 border-l-purple-700 bg-[#dbf1d43d] border-l-2 py-3 px-4 rounded-lg font-bold text-xl"
               : "text-black bg-none"
