@@ -22,23 +22,23 @@ const Aside = ({ activeSection }) => {
 
   return (
     <div className="fixed ">
-      <div className="mb-20 bg-purple-700 xl:w-48 xl:h-48 rounded-full">
+      <div className="mb-20 bg-purple-700 w-40 h-40 lg:w-40 lg:h-40 xl:w-48 xl:h-48 rounded-full">
         <img
           src={pexel}
           loading="lazy"
           alt=""
-          className=" w-40 h-40 xl:w-48 xl:h-48 rounded-full object-cover"
+          className=" w-40 h-40 xl:w-48 xl:h-48 lg:w-40 lg:h-40 rounded-full object-cover"
         />
       </div>
 
       <div className="flex items-center gap-5 mb-5">
-        <RiHomeOfficeFill className="text-5xl text-purple-700 font-bold" />
+        <RiHomeOfficeFill className="xl:text-5xl lg:text-4xl  text-purple-700 font-bold" />
         <button
           onClick={(e) => {
             e.preventDefault();
             scrollToSection("home");
           }}
-          className={`font-bold  xl:text-[22px] ${
+          className={`font-bold lg:text-[19px] text-[22px]  xl:text-[22px] ${
             activeSection === "home"
               ? "text-purple-700 border-l-purple-700 bg-[#dbf1d43d] border-l-2 py-3 px-4 rounded-lg font-bold text-xl"
               : "text-black bg-none"
@@ -49,13 +49,13 @@ const Aside = ({ activeSection }) => {
       </div>
 
       <div className="flex items-center gap-5 ml-1 mb-6">
-        <PiEyes className="text-4xl font-extrabold" />
+        <PiEyes className="xl:text-4xl lg:text-3xl  font-extrabold" />
         <button
           onClick={(e) => {
             e.preventDefault();
             scrollToSection("project");
           }}
-          className={`font-bold text-[22px] ${
+          className={`font-bold lg:text-[19px] text-[22px]  xl:text-[22px] ${
             activeSection === "project"
               ? "text-purple-700 bg-[#dbf1d43d] border-l-2 py-3 px-4 rounded-lg font-bold text-xl  border-l-purple-700"
               : "text-black"
@@ -72,7 +72,7 @@ const Aside = ({ activeSection }) => {
             e.preventDefault();
             scrollToSection("about");
           }}
-          className={`font-bold text-[21px] ${
+          className={`font-bold lg:text-[19px] text-[22px]  xl:text-[22px] ${
             activeSection === "about"
               ? "text-purple-700 bg-[#dbf1d43d] border-l-2 py-3 px-4 rounded-lg font-bold text-xl  border-l-purple-700"
               : "text-black"
@@ -82,19 +82,19 @@ const Aside = ({ activeSection }) => {
         </button>
       </div>
 
-      <div className="mt-16 mb-8 text-center">
+      <div className=" lg:mt-10 xl:mt-16 mb-8 text-center">
         <h1 className="text-purple-700 text-xl font-bold">EN /</h1>
       </div>
       <div className="flex gap-3 mb-3 items-center justify-center">
         <a href="https://github.com/Zaybhibs/" target="_blank">
-          <FaGithub className="font-bold text-4xl" />
+          <FaGithub className="font-bold xl:text-4xl lg:text-3xl" />
         </a>
         <a
           href="https://www.linkedin.com/in/zaynab-olusekun-0667bb30b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
           target="_blank"
         >
           {" "}
-          <FaLinkedin className=" text-4xl" />
+          <FaLinkedin className=" xl:text-4xl lg:text-3xl" />
         </a>
       </div>
       <div className="flex gap-4 items-center justify-center">
@@ -102,10 +102,10 @@ const Aside = ({ activeSection }) => {
           href="https://www.instagram.com/bhibsss?igsh=MW4wNmU1ajVlMXVuYQ%3D%3D&utm_source=qr"
           target="_blank"
         >
-          <AiFillInstagram className="font-bold text-5xl" />
+          <AiFillInstagram className="font-bold xl:text-5xl lg:text-3xl" />
         </a>
         <a href="https://x.com/abake24093392?s=21" target="_blank">
-          <FaTwitter className=" text-4xl" />
+          <FaTwitter className=" xl:text-4xl lg:text-3xl" />
         </a>
       </div>
     </div>

@@ -64,7 +64,7 @@ const Home = () => {
   return (
     <>
       {loading ? (
-        <div className="md:fixed inset-0 flex items-center pt-80 md:pt-0 justify-center bg-white ">
+        <div className="md:fixed inset-0 flex items-center pt-80 md:pt-5 xl:pt-0 justify-center bg-white ">
           <div className="flex animate-zoom-in-out ">
             <img src={logo} alt="logo" className=" w-8 h-8" />
             <h2 className="font-bold text-4xl pt-2 text-purple-700">
@@ -74,7 +74,9 @@ const Home = () => {
         </div>
       ) : (
         <div className="flex">
-          <Cursorball />
+          <div className="hidden lg:flex">
+            <Cursorball />
+          </div>
           <div className="hidden lg:fixed lg:flex top-0 left-0 h-full lg:w-[253px] xl:w-[310px] border-r-2 border-r-slate-200 px-12 pt-10">
             <Aside activeSection={activeSection} />
           </div>
@@ -90,7 +92,7 @@ const Home = () => {
               popupVisible ? "blur-sm pointer-events-none select-none" : ""
             }`}
           >
-            <div className="hidden xl:flex  lg:fixed right-7 z-50  ">
+            <div className="hidden lg:flex  lg:fixed right-7 z-50  ">
               <Navbar togglePopup={togglePopup} />
             </div>
 
