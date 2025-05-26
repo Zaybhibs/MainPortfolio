@@ -69,7 +69,7 @@ const Scroll = () => {
         // Enter frame mode when scrolling down past 10% progress
         // Inside your handleScroll function, replace the conditions with:
         const thresholdEnter = window.innerWidth >= 1280 ? 0.1 : 0.55; // XL screens use 0.1, others use 0.05
-        const thresholdExit = window.innerWidth >= 1280 ? 0.95 : 0.85; // XL screens use 0.95, others use 0.9
+        const thresholdExit = window.innerWidth >= 1280 ? 0.96 : 0.85; // XL screens use 0.95, others use 0.9
 
         if (clampedProgress > thresholdEnter && !isInFrame && !isScrollingUp) {
           setIsInFrame(true);
@@ -108,7 +108,7 @@ const Scroll = () => {
   return (
     <div
       ref={sectionRef}
-      className="relative bg-white md:left-28 xl:left-28 lg:left-6 left-5 items-center md:py-16 px-4 mt-[122rem] md:mt-[109rem]  lg:min-h-[100vh] xl:min-h-[150vh]"
+      className="relative bg-white md:left-28 xl:left-12 lg:left-6 left-5 items-center md:py-16 px-4 mt-[122rem] md:mt-[109rem]  lg:min-h-[100vh] xl:min-h-[150vh]"
       // style={{ marginTop: "109rem", minHeight: "150vh" }}
     >
       <div data-aos="flip-up" className="mb-10">
@@ -139,7 +139,7 @@ const Scroll = () => {
         </div>
       </div>
 
-      <div className=" hidden lg:flex xl:gap-20 lg:gap-8 relative">
+      <div className=" hidden lg:flex xl:gap-12 lg:gap-8 relative">
         <div className="w-full  xl:max-w-2xl lg:max-w-lg  ">
           {!isInFrame && (
             <div
@@ -169,7 +169,7 @@ const Scroll = () => {
           <div
             className={`${
               isInFrame
-                ? "flex  xl:gap-10 relative xl:top-[1050px] lg:top-[630px] xl:left-40 lg:left-24"
+                ? "flex  xl:gap-6 relative xl:top-[1050px] lg:top-[630px] xl:left-40 lg:left-24"
                 : "opacity-0"
             } 
     flex justify-center transition-all duration-500 ease-out`}
@@ -185,7 +185,7 @@ const Scroll = () => {
                 src={frame}
                 loading="lazy"
                 alt="Display Frame"
-                className="w-full lg:min-w-[500px] lg:min-h-[400px] xl:min-w-[800px] xl:min-h-[600px]  lg:w-[30vw] lg:h-[30vh] xl:w-[60vw] xl:h-[80vh]    cover"
+                className="w-full lg:min-w-[500px] lg:min-h-[400px] xl:min-w-[700px] xl:min-h-[500px]  lg:w-[30vw] lg:h-[30vh] xl:w-[60vw] xl:h-[80vh]    cover"
                 // style={{
                 //   width: "60vw",
                 //   height: "80vh",

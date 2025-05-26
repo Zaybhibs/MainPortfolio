@@ -77,7 +77,7 @@ const Home = () => {
           <div className="hidden lg:flex">
             <Cursorball />
           </div>
-          <div className="hidden lg:fixed lg:flex top-0 left-0 h-full lg:w-[253px] xl:w-[310px] border-r-2 border-r-slate-200 px-12 pt-10">
+          <div className="hidden lg:fixed lg:flex top-0 left-0 h-full lg:w-[253px] xl:w-[280px] border-r-2 border-r-slate-200 px-12 pt-10">
             <Aside activeSection={activeSection} />
           </div>
           <div className="fixed z-50 lg:hidden">

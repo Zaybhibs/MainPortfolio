@@ -7,7 +7,7 @@ const About = () => {
 
   return (
     <div>
-      <div className="relative  xl:left-20 md:left-7 left-5  mt-[100px] mb-14">
+      <div className="relative  xl:left-14 md:left-7 left-5  mt-[100px] mb-14">
         <h1 className="font-bold xl:text-4xl text-2xl">About&gt;</h1>
         <h2 className="mt-4 md:text-xl  ">
           <span class="text-purple-700">class</span>{" "}

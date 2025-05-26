@@ -27,7 +27,7 @@ const Project = () => {
   }, [isHovered]);
 
   return (
-    <div className="relative md:left-1 xl:left-20 md:mt-[200px] xl:mt-[950px] mt-[250px] px-4">
+    <div className="relative md:left-1 xl:left-14 md:mt-[200px] xl:mt-[950px] mt-[250px] px-4">
       <div className="flex gap-2 items-center">
         <h1 className="text-4xl font-bold">Projects&gt;</h1>
 

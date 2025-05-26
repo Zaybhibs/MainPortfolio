@@ -53,7 +53,7 @@ const Popup = ({ onClose }) => {
   return (
     <>
       <div className="fixed inset-0 z-[9999] bg-black/50 backdrop-blur-lg flex justify-center items-center">
-        <div className="bg-purple-200 fixed rounded-md p-4 top-[41%] md:top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 lg:w-[450px] w-[350px]  lg:h-[450px] duration-200">
+        <div className="bg-purple-200 fixed rounded-md p-4 top-[41%] xl:top-1/2 lg:top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 lg:w-[450px] w-[350px]  lg:h-[450px] duration-200">
           <div className="flex justify-between">
             <h2 className="font-bold">Send me a message</h2>
             <IoCloseOutline onClick={onClose} className="cursor-pointer" />
